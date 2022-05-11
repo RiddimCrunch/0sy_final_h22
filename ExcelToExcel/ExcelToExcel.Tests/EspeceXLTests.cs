@@ -65,13 +65,13 @@ namespace ExcelToExcel.Tests
             Assert.NotEqual(notExpected, actual);
         }
 
-        [Fact]        
+        [Fact]
         public void LoadFile_ShouldFail_When_NoFile()
         {
             /// Arrange
             /// 
             var especeXL = new EspeceXL("");
-            
+
             /// Act
             /// 
             Action act = () => especeXL.LoadFile();
@@ -112,9 +112,40 @@ namespace ExcelToExcel.Tests
             Assert.Throws<ArgumentException>(act);
         }
         // TODO : Q06 : Créez le test « SaveJson_BadFileName_Should_Fail »
+        [Theory]
+        [MemberData(nameof(BadExcelFilesTestData))]
+        public void SaveJson_BadFileName_Should_Fail()
+        {
+
+        }
 
         // TODO : Q07 : Créez le test « SaveXls_BadFileName_Should_Fail »
+        [Theory]
+        [MemberData(nameof(BadExcelFilesTestData))]
+        public void SaveXls_BadFileName_Should_Fail(string fn)
+        {
+            var filename = Path.Combine(excelFilesPath, fn);
+            var especeXL = new EspeceXL(filename);
 
+            Action act = () => especeXL.SaveXls(filename);
+
+            Assert.Throws<ArgumentException>(act);
+        }
+
+        // Q08
+        [Theory]
+        [MemberData(nameof(BadExcelFilesTestData))]
+        public void SaveToFile_BadFileName_Should_Fail(string fn)
+        {
+            var filename = Path.Combine(excelFilesPath, fn);
+            var especeXL = new EspeceXL(filename);
+
+            Action act = () => especeXL.SaveToFile(filename);
+
+            Assert.Throws<ArgumentException>(act);
+        }
+
+        // Q09
         [Theory]
         [InlineData(".html")]
         [InlineData(".css")]

@@ -161,7 +161,6 @@ namespace ExcelToExcel.Models
             /// TODO : Q08 Ajouter les validations pour passer les tests
             
             var ext = Path.GetExtension(filename).ToLower();
-
             switch (ext)
             {
                 case ".csv":
@@ -181,7 +180,7 @@ namespace ExcelToExcel.Models
             }
         }
 
-        private void SaveXls(string filename)
+        public void SaveXls(string filename)
         {
             /// TODO : Q07 Ajouter les validations pour passer les tests
             wb.SaveAs(filename);
