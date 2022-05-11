@@ -102,9 +102,9 @@ namespace ExcelToExcel.Tests
         // TODO : Q05 : Créez le test « SaveCSV_BadFileName_Should_Fail »
         [Theory]
         [MemberData(nameof(BadExcelFilesTestData))]
-        public void SaveCSV_BadFileName_Should_Fail(string fn)
+        public void SaveCSV_BadFileName_Should_Fail(string filen)
         {
-            var filename = Path.Combine(excelFilesPath, fn);
+            var filename = Path.Combine(excelFilesPath, filen);
             var especeXL = new EspeceXL(filename);
 
             Action act = () => especeXL.SaveCSV(filename);
