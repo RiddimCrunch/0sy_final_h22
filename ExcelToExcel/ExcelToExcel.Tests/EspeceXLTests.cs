@@ -127,9 +127,9 @@ namespace ExcelToExcel.Tests
         // TODO : Q07 : Créez le test « SaveXls_BadFileName_Should_Fail »
         [Theory]
         [MemberData(nameof(BadExcelFilesTestData))]
-        public void SaveXls_BadFileName_Should_Fail(string fn)
+        public void SaveXls_BadFileName_Should_Fail(string filen)
         {
-            var filename = Path.Combine(excelFilesPath, fn);
+            var filename = Path.Combine(excelFilesPath, filen);
             var especeXL = new EspeceXL(filename);
 
             Action act = () => especeXL.SaveXls(filename);
