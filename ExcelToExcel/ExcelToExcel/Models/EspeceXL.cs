@@ -153,13 +153,20 @@ namespace ExcelToExcel.Models
         {
             /// TODO : Q06 Ajouter les validations pour passer les tests
             /// 
-            var lst = GetAsList();
-
-            string output = JsonConvert.SerializeObject(lst, Formatting.Indented);
-
-            using (var writer = new StreamWriter(filename))
+            if (Path.GetExtension(filename) != ".json")
             {
-                writer.Write(output);
+                throw new ArgumentException("Mauvais nom de fichier!");
+            }
+            else
+            {
+                var lst = GetAsList();
+
+                string output = JsonConvert.SerializeObject(lst, Formatting.Indented);
+
+                using (var writer = new StreamWriter(filename))
+                {
+                    writer.Write(output);
+                }
             }
         }
 
