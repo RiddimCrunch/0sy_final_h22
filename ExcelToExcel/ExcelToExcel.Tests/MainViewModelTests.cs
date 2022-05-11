@@ -73,9 +73,9 @@ namespace ExcelToExcel.Tests
         // XTODO : Q03 : Créer le test CanExecuteSaveCommand_OutputFileInvalid_ShouldReturn_False
         [Theory]
         [MemberData(nameof(BadFileTypesTestData))]
-        public void CanExecuteSaveCommand_OutputFileInvalid_ShouldReturn_False(string fn)
+        public void CanExecuteSaveCommand_OutputFileInvalid_ShouldReturn_False(string filen)
         {
-            var filename = Path.Combine(excelFilesPath, fn);
+            var filename = Path.Combine(excelFilesPath, filen);
             vm.OutputFilename = filename;
             
             var actual = vm.SaveCommand.CanExecute("");
