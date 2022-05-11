@@ -12,7 +12,7 @@ namespace ExcelToExcel.Models
         private string sheetname = "especes";
 
         private IXLWorkbook wb;
-
+     
         public string Filename { get; set; }
         public bool IsReadOnly { get; private set; } = false;
 
@@ -133,7 +133,7 @@ namespace ExcelToExcel.Models
         {
             /// TODO : Q05 : Ajouter les validations pour passer les tests
             /// 
-
+            
             var output = GetCSV();
 
             using (var writer = new StreamWriter(filename, false, System.Text.Encoding.UTF8))
@@ -176,6 +176,7 @@ namespace ExcelToExcel.Models
                 default:
                     /// TODO : Q09 Lancer l'exception ArgumentException avec le message "Type inconnu" et le nom du paramètre filename
                     /// 
+                    throw new ArgumentException("Type inconnu" + filename);
                     break;
             }
         }

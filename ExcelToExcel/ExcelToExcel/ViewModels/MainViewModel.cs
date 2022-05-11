@@ -84,7 +84,6 @@ namespace ExcelToExcel.ViewModels
 
             if (!string.IsNullOrEmpty(obj))
                 InputFilename = obj;
-
             var fileExists = File.Exists(InputFilename);
             if (!fileExists)
             {
@@ -134,7 +133,6 @@ namespace ExcelToExcel.ViewModels
         {
             /// TODO : S'assurer que les tests de la commande fonctionne
             /// 
-
             return !string.IsNullOrEmpty(InputFilename);
         }
 

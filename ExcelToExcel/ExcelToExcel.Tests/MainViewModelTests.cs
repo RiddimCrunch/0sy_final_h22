@@ -51,9 +51,8 @@ namespace ExcelToExcel.Tests
             var expected = "Fichier vide!";
 
             /// Act
-            vm.InputFilename = filename;
+         
             var actual = vm.Message;
-
             /// Assert
             Assert.Equal(expected, actual);
         }
@@ -84,7 +83,7 @@ namespace ExcelToExcel.Tests
             Assert.False(actual);
         }
 
-        // TODO : Q04 : Créer le test CanExecuteSaveCommand_OutputFileValid_ShouldReturn_True(string filename)
+        // XTODO : Q04 : Créer le test CanExecuteSaveCommand_OutputFileValid_ShouldReturn_True(string filename)
         [Theory]
         [MemberData(nameof(GoodExcelFileTestData))]
         public void CanExecuteSaveCommand_OutputFileValid_ShouldReturn_True(string fn)
