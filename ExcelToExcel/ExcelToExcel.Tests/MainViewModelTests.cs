@@ -51,14 +51,14 @@ namespace ExcelToExcel.Tests
             var expected = "Fichier vide!";
 
             /// Act
-           // vm.InputFilename.;
+            vm.InputFilename = filename;
             var actual = vm.Message;
 
             /// Assert
             Assert.Equal(expected, actual);
         }
 
-        // TODO : Q02 : Créer le test CanExecuteSaveCommand_FileNotLoaded_ShouldReturn_False
+        // XTODO : Q02 : Créer le test CanExecuteSaveCommand_FileNotLoaded_ShouldReturn_False
         [Fact]
         public void CanExecuteSaveCommand_FileNotLoaded_ShouldReturn_False()
         {
@@ -72,6 +72,17 @@ namespace ExcelToExcel.Tests
         }
 
         // TODO : Q03 : Créer le test CanExecuteSaveCommand_OutputFileInvalid_ShouldReturn_False
+        [Theory]
+        [MemberData(nameof(BadFileTypesTestData))]
+        public void CanExecuteSaveCommand_OutputFileInvalid_ShouldReturn_False(string fn)
+        {
+            var filename = Path.Combine(excelFilesPath, fn);
+            vm.OutputFilename = filename;
+            
+            var actual = vm.SaveCommand.CanExecute("");
+
+            Assert.False(actual);
+        }
 
         // TODO : Q04 : Créer le test CanExecuteSaveCommand_OutputFileValid_ShouldReturn_True(string filename)
 
