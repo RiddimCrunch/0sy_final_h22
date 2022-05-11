@@ -183,7 +183,15 @@ namespace ExcelToExcel.Models
         public void SaveXls(string filename)
         {
             /// TODO : Q07 Ajouter les validations pour passer les tests
-            wb.SaveAs(filename);
+            if (Path.GetExtension(filename) == ".xlsx")
+            {
+                throw new ArgumentException("Mauvais nom de fichier!");
+            }
+            else
+            {
+                wb.SaveAs(filename);
+            }
+            
         }
     }
 }
