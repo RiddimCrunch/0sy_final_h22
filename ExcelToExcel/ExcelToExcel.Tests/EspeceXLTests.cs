@@ -154,6 +154,7 @@ namespace ExcelToExcel.Tests
         [Theory]
         [InlineData(".html")]
         [InlineData(".css")]
+        [InlineData(".docx")]
         public void SaveToFile_BadExtension_Should_Fail(string fn)
         {
             var filename = Path.Combine(excelFilesPath, fn);
