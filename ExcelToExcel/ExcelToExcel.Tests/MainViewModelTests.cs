@@ -71,7 +71,7 @@ namespace ExcelToExcel.Tests
             Assert.True(actual);
         }
 
-        // TODO : Q03 : Créer le test CanExecuteSaveCommand_OutputFileInvalid_ShouldReturn_False
+        // XTODO : Q03 : Créer le test CanExecuteSaveCommand_OutputFileInvalid_ShouldReturn_False
         [Theory]
         [MemberData(nameof(BadFileTypesTestData))]
         public void CanExecuteSaveCommand_OutputFileInvalid_ShouldReturn_False(string fn)
@@ -85,7 +85,17 @@ namespace ExcelToExcel.Tests
         }
 
         // TODO : Q04 : Créer le test CanExecuteSaveCommand_OutputFileValid_ShouldReturn_True(string filename)
+        [Theory]
+        [MemberData(nameof(GoodExcelFileTestData))]
+        public void CanExecuteSaveCommand_OutputFileValid_ShouldReturn_True(string fn)
+        {
+            var filename = Path.Combine(excelFilesPath, fn);
+            vm.OutputFilename = filename;
 
+            var actual = vm.SaveCommand.CanExecute(filename);
+
+            Assert.True(!actual);
+        }
 
         #endregion
 
