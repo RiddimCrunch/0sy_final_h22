@@ -114,9 +114,14 @@ namespace ExcelToExcel.Tests
         // TODO : Q06 : Créez le test « SaveJson_BadFileName_Should_Fail »
         [Theory]
         [MemberData(nameof(BadExcelFilesTestData))]
-        public void SaveJson_BadFileName_Should_Fail()
+        public void SaveJson_BadFileName_Should_Fail(string fn)
         {
+            var filename = Path.Combine(excelFilesPath, fn);
+            var especeXL = new EspeceXL(filename);
 
+            Action act = () => especeXL.SaveJson(filename);
+
+            Assert.Throws<ArgumentException>(act);
         }
 
         // TODO : Q07 : Créez le test « SaveXls_BadFileName_Should_Fail »
