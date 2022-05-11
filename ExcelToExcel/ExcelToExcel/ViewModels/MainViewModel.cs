@@ -86,7 +86,6 @@ namespace ExcelToExcel.ViewModels
                 InputFilename = obj;
 
             var fileExists = File.Exists(InputFilename);
-
             if (!fileExists)
             {
                 Message = "Fichier inexistant!";
@@ -111,6 +110,7 @@ namespace ExcelToExcel.ViewModels
             } catch (ArgumentException ex)
             {
                 Message = "Mauvais format de fichier!";
+                
             } catch (IOException ex)
             {
                 especes.LoadFileReadOnly();
