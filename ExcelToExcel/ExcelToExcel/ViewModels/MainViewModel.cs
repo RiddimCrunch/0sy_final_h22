@@ -87,7 +87,14 @@ namespace ExcelToExcel.ViewModels
             var fileExists = File.Exists(InputFilename);
             if (!fileExists)
             {
-                Message = "Fichier inexistant!";
+                if(inputFilename == string.Empty)
+                {
+                    Message = "Fichier vide!";
+                }
+                else
+                {
+                    Message = "Fichier inexistant!";
+                }                
                 result = false;
             }
             else
@@ -101,21 +108,23 @@ namespace ExcelToExcel.ViewModels
 
         private void LoadContent(string obj = null)
         {
-            try
-            {
-                especes = new EspeceXL(InputFilename);
-                especes.LoadFile();
-                FileContent = especes.GetCSV();
-            } catch (ArgumentException ex)
-            {
-                Message = "Mauvais format de fichier!";
-                
-            } catch (IOException ex)
-            {
-                especes.LoadFileReadOnly();
-                FileContent = especes.GetCSV();
-                Message = "Fichier en lecture seule";
-            }
+          
+                try
+                {
+                    especes = new EspeceXL(InputFilename);
+                    especes.LoadFile();
+                    FileContent = especes.GetCSV();
+                }
+                catch (ArgumentException ex)
+                {
+                    Message = "Mauvais format de fichier!";               
+                }
+                catch (IOException ex)
+                {
+                    especes.LoadFileReadOnly();
+                    FileContent = especes.GetCSV();
+                    Message = "Fichier en lecture seule";
+                }
         }
 
 
@@ -140,8 +149,8 @@ namespace ExcelToExcel.ViewModels
         {
             /// TODO : S'assurer que les tests de la commande fonctionne
             /// 
-
-            especes.SaveToFile(OutputFilename);
+            
+                especes.SaveToFile(OutputFilename);
         }
     }
 }
